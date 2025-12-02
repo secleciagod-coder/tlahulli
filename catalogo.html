@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo - TLAHULLI</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f6f1eb; margin: 0; padding: 20px; }
+    h1 { text-align: center; color: #4a2c2a; font-size: 3rem; margin-bottom: 40px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; padding: 0 20px; }
+    .product { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; transition: transform .3s; }
+    .product:hover { transform: scale(1.03); }
+    .product img { width:100%; border-radius:10px; }
+    .price { font-size: 1.4rem; color: #6c4f4b; font-weight: bold; margin: 10px 0; }
+    .desc { font-size: 0.95rem; color: #444; }
+  </style>
+</head>
+<body>
+  <div id="cartBar" style="position:fixed; top:0; right:0; background:#4a2c2a; color:white; padding:10px 20px; border-bottom-left-radius:15px; font-size:1.1rem; z-index:999;">
+    🛒 Carrito: <span id="cartCount">0</span>
+  </div>
+
+  <h1>Catálogo TLAHULLI</h1>
+
+  <div class="grid">
+    
+    <div class="product">
+      <img src="img/coco.jpg" alt="COCO">
+      <h2>COCO</h2>
+      <div class="price">$150</div>
+      <button onclick="addToCart('COCO')">Agregar al carrito</button>
+      <p class="desc">Notas cremosas y dulces que te transportan directo a la playa. Relajación total.</p>
+    </div>
+    
+    <div class="product">
+      <img src="img/pepino.jpg" alt="PEPINO CON MELÓN">
+      <h2>PEPINO CON MELÓN</h2>
+      <div class="price">$150</div>
+      <button onclick="addToCart('PEPINO CON MELÓN')">Agregar al carrito</button>
+      <p class="desc">Fusión vibrante y acuática. Limpieza y energía renovada.</p>
+    </div>
+    
+    <div class="product">
+      <img src="img/gardenia.jpg" alt="GARDENIA">
+      <h2>GARDENIA</h2>
+      <div class="price">$150</div>
+      <button onclick="addToCart('GARDENIA')">Agregar al carrito</button>
+      <p class="desc">Floral intenso y elegante. Sofisticación clásica.</p>
+    </div>
+    
+    <div class="product">
+      <img src="img/canela.jpg" alt="CANELA">
+      <h2>CANELA</h2>
+      <div class="price">$150</div>
+      <button onclick="addToCart('CANELA')">Agregar al carrito</button>
+      <p class="desc">Dulce y picante. Aroma cálido y familiar.</p>
+    </div>
+    
+    <div class="product">
+      <img src="img/vainilla.jpg" alt="VAINILLA">
+      <h2>VAINILLA</h2>
+      <div class="price">$150</div>
+      <button onclick="addToCart('VAINILLA')">Agregar al carrito</button>
+      <p class="desc">Aroma cálido, suave y nostálgico.</p>
+    </div>
+    
+    <div class="product">
+      <img src="img/pino.jpg" alt="PINO">
+      <h2>PINO</h2>
+      <div class="price">$150</div>
+      <button onclick="addToCart('PINO')">Agregar al carrito</button>
+      <p class="desc">Aroma fresco de bosque. Resinoso y vigorizante.</p>
+    </div>
+    
+    <div class="product">
+      <img src="img/cafe.jpg" alt="CAFÉ Y CARAMELO">
+      <h2>CAFÉ Y CARAMELO</h2>
+      <div class="price">$150</div>
+      <button onclick="addToCart('CAFÉ Y CARAMELO')">Agregar al carrito</button>
+      <p class="desc">Dulce aroma a café de olla. Pura calidez.</p>
+    </div>
+    
+    <div class="product">
+      <img src="img/menta.jpg" alt="MENTA">
+      <h2>MENTA</h2>
+      <div class="price">$150</div>
+      <button onclick="addToCart('MENTA')">Agregar al carrito</button>
+      <p class="desc">Aroma herbal que purifica y refresca.</p>
+    </div>
+    
+  </div>
+
+  <a href="index.html" style="display:block; text-align:center; margin-top:40px;">Volver al inicio</a>
+
+<script>
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+updateCartBar();
+
+function addToCart(item){
+  cart.push(item);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartBar();
+  alert(item + ' añadido al carrito');
+}
+
+function updateCartBar(){
+  document.getElementById('cartCount').innerText = cart.length;
+}
+</script>
+</body>
+</html>
